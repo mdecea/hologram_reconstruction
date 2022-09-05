@@ -10,4 +10,4 @@ The easiest way to start using the code is to look at the examples in the `examp
 
 Most classes and functions are thoroughly documented so it should be easy to understand and build on top of it.
 
-Some 
+Some of the functionality (specially the computational techniques for twin image elimination) is not fully tested, which is why this is not yet packaged.
