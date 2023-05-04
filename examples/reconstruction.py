@@ -4,15 +4,12 @@ The example file corresponds to a real hologram acquired on 20 um diameter beads
 illuminated by an 810 nm LED.
 '''
 
-import sys
-sys.path.insert(0, "../")
-
 import matplotlib.pyplot as plt
-from image import HPOEImage
-from inout.visualize import plot_image
-import process.image_processing
-from backpropagate.convolution_approach import backpropagate_conv
-from inout.io import save_image
+from holopoe.image import HPOEImage
+from holopoe.inout.visualize import plot_image
+import holopoe.process as process
+from holopoe.backpropagate.convolution_approach import backpropagate_conv
+from holopoe.inout.io import save_image
 
 plt.rcParams['figure.figsize'] = [12, 9]
 plt.rcParams['figure.dpi'] = 100
@@ -22,10 +19,10 @@ plt.rcParams['figure.dpi'] = 100
 
 # Load the hologram and the background
 # We used a ZWOASI1600MM camera to record the hologram. This cmaeras has 3.8 um pixel spacing.
-holo = HPOEImage(path='20um_beads_holo_Ibias=30.5mA.png',
+holo = HPOEImage(path='./examples/20um_beads_holo_Ibias=30.5mA.png',
                  image=None, pixel_spacing=3.8, n_medium=1.0, wav=0.81, channels=0)
 # The background is loaded from an average
-bg = HPOEImage.from_average('./', pixel_spacing=3.8, n_medium=1.0,
+bg = HPOEImage.from_average('./examples/', pixel_spacing=3.8, n_medium=1.0,
                             wav=0.81, channels=0, image_glob='20um_beads_bg*.png')
 
 # Subtract background from the hologram, plot it and save it
